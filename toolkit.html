@@ -1286,19 +1286,46 @@ window.TOOLKIT = {
     },
   ],
 
+  actividad: {
+    title: 'El mismo problema, cinco caminos',
+    subtitle: '30 minutos · 5 grupos · guía para el docente',
+    problema: 'Llegas a clase a las 6:30 p. m. después de trabajar todo el día. No has comido.',
+    pasos: [
+      { time: '3 min', title: 'Formar los grupos', text: 'Contar 1-2-3-4-5 en voz alta por todo el salón. Los unos se juntan, los dos se juntan, y así. Al azar a propósito: el contraste con los equipos de la segunda parte es parte de la clase.' },
+      { time: '2 min', title: 'Repartir el método', text: 'Cada grupo recibe una metodología. Nadie escoge: se asigna. Proyectar la slide con las cinco tarjetas.' },
+      { time: '12 min', title: 'Trabajar', text: 'Solo pueden usar su método. Prohibido decir la solución: entregan el primer movimiento que su metodología pide.' },
+      { time: '8 min', title: 'Socializar', text: '90 segundos por grupo. El docente no corrige: solo pregunta "¿y eso qué les habría ahorrado?".' },
+      { time: '5 min', title: 'Cerrar', text: 'Mismo problema, cinco primeros movimientos. Ninguno equivocado. Elegir mal el método cuesta meses; elegir mal la idea cuesta una semana.' },
+    ],
+    tarjetas: [
+      { n: '1', name: 'Design Thinking', pide: 'A quién van a entrevistar y las 3 preguntas exactas que le harían.', trampa: 'Preguntar "¿usarías esto?". Hay que preguntar por la última vez que le pasó.' },
+      { n: '2', name: 'Lean Startup', pide: 'El supuesto que hunde todo si resulta falso, y un experimento de $0 para probarlo esta semana.', trampa: 'Confundir el experimento con una encuesta de opinión.' },
+      { n: '3', name: 'Agile / Scrum', pide: 'El problema partido en 3 entregas cortas y qué se demuestra al final de la primera.', trampa: 'Partir por tareas internas en vez de por algo que alguien pueda ver y usar.' },
+      { n: '4', name: 'Innovación Abierta', pide: 'Quién allá afuera ya resolvió parte de esto y qué le pedirían exactamente.', trampa: 'Quedarse en "buscar aliados". Hay que nombrar a alguien concreto y qué se le pide.' },
+      { n: '5', name: 'Design Sprint', pide: 'El plan de 5 días: qué se prototipa el jueves y con quién se prueba el viernes.', trampa: 'Llenar los cinco días de reuniones. El jueves tiene que existir algo tocable.' },
+    ],
+    notas: [
+      'Si el grupo es más pequeño, quitar Innovación Abierta antes que cualquier otra: es la más difícil de aterrizar en 12 minutos.',
+      'Si sobra tiempo, pedir que cada grupo diga qué método habría usado el grupo de al lado y por qué.',
+      'Problema alterno si el de comer no prende: "encontrar parqueadero cerca de la universidad a las 6:15 p. m.".',
+    ],
+  },
+
   agenda: {
     title: 'Agenda de la clase de hoy',
-    subtitle: '6:30 – 9:00 p. m. · 18 estudiantes · Founder Match',
+    subtitle: '6:30 – 9:00 p. m. · 18 estudiantes · dos bloques',
     blocks: [
-      { time: '6:30 – 6:45', title: 'Bienvenida y encuadre', text: 'Portada, reglas del curso y por qué hoy no vamos a hablar de ideas todavía.', tag: 'Slides 1' },
-      { time: '6:45 – 7:00', title: 'La historia y la apertura', text: 'El portal que nadie usó, el insight y la regla de las 10 conversaciones. Reflexión silenciosa de 60 segundos.', tag: 'Slides 2–10' },
-      { time: '7:00 – 7:20', title: 'Formulario Founder Match', text: 'Todos abren /form en el celular y crean su Founder Card. Nadie avanza hasta que estén las 18.', tag: '/form' },
-      { time: '7:20 – 7:55', title: 'Ronda de Founder Cards', text: 'El docente proyecta una card a la vez; todos votan ❤️ o 🤔 desde el celular. Aprox. 2 minutos por persona.', tag: '/match + /vote' },
-      { time: '7:55 – 8:05', title: 'Pausa', text: 'Café. El docente revisa el tablero y genera los equipos.', tag: '/' },
-      { time: '8:05 – 8:15', title: 'Revelación de equipos', text: 'Se proyectan los equipos con su razón, sinergia y complementariedad.', tag: '/results' },
-      { time: '8:15 – 8:40', title: 'Primer trabajo en equipo', text: 'Acuerdo de equipo (roles, horarios, canal) y tres problemas candidatos por equipo.', tag: 'Toolkit · Entrevistas' },
-      { time: '8:40 – 8:55', title: 'Socialización', text: 'Cada equipo presenta en 3 minutos su problema candidato favorito y a quién va a entrevistar.', tag: '' },
-      { time: '8:55 – 9:00', title: 'Cierre y tarea', text: 'Tarea: 3 entrevistas por persona antes de la próxima sesión, con cita textual registrada.', tag: 'Slides 11–21' },
+      { time: '6:30 – 6:40', title: 'Bienvenida y encuadre', text: 'Portada, reglas del curso y por qué hoy no vamos a hablar de ideas todavía.', tag: 'Slides 1' },
+      { time: '6:40 – 6:55', title: 'La historia y la apertura', text: 'El portal que nadie usó, el insight y la regla de las 10 conversaciones. Reflexión silenciosa de 60 segundos.', tag: 'Slides 2–10' },
+      { time: '6:55 – 7:05', title: 'BLOQUE 1 · ¿Qué es innovación?', text: 'Juego de "¿invento o innovación?" y la maleta con ruedas. Innovar no es inventar: es crear valor que alguien adopta.', tag: 'Slides 22–25' },
+      { time: '7:05 – 7:15', title: 'Las cinco metodologías', text: 'Design Thinking, Lean Startup, Agile, Innovación Abierta y Design Sprint. Cada una responde una pregunta distinta.', tag: 'Slides 26–28' },
+      { time: '7:15 – 7:45', title: 'Actividad: el mismo problema, cinco caminos', text: 'Cinco grupos al azar, una metodología cada uno, el mismo problema. 12 min de trabajo y 90 seg por grupo.', tag: 'Toolkit · Actividad' },
+      { time: '7:45 – 7:55', title: 'Pausa', text: 'Café. El docente abre el panel y proyecta el QR del formulario.', tag: '' },
+      { time: '7:55 – 8:10', title: 'BLOQUE 2 · Formulario Founder Match', text: 'Todos crean su Founder Card desde el celular. Nadie avanza hasta que estén las 18.', tag: '/form' },
+      { time: '8:10 – 8:40', title: 'Ronda de Founder Cards', text: 'El docente proyecta una card a la vez; todos votan ❤️ o 🤔. Aprox. 1,5 minutos por persona.', tag: '/match + /vote' },
+      { time: '8:40 – 8:50', title: 'Revelación de equipos', text: 'Se generan y se proyectan los equipos con su razón, sinergia y complementariedad.', tag: '/results' },
+      { time: '8:50 – 8:57', title: 'Primer acuerdo de equipo', text: 'Roles, horarios, canal de comunicación y tres problemas candidatos.', tag: 'Toolkit · Entrevistas' },
+      { time: '8:57 – 9:00', title: 'Cierre y tarea', text: 'Tarea: 3 entrevistas por persona antes de la próxima sesión, con cita textual registrada.', tag: '' },
     ],
   },
 };
@@ -1330,6 +1357,7 @@ window.TOOLKIT = {
     { id: 'tools', label: '🧰 Herramientas' },
     { id: 'interviews', label: '🎙️ Entrevistas' },
     { id: 'frameworks', label: '📐 Frameworks' },
+    { id: 'actividad', label: '🎲 Actividad' },
     { id: 'agenda', label: '🗓️ Agenda' },
   ];
   var active = (window.location.hash || '#tools').replace('#', '');
@@ -1360,6 +1388,7 @@ window.TOOLKIT = {
     if (active === 'tools') host.innerHTML = tools();
     else if (active === 'interviews') host.innerHTML = interviews();
     else if (active === 'frameworks') host.innerHTML = frameworks();
+    else if (active === 'actividad') host.innerHTML = actividad();
     else host.innerHTML = agenda();
   }
 
@@ -1440,6 +1469,54 @@ window.TOOLKIT = {
         );
       })
       .join('');
+  }
+
+  function actividad() {
+    var a = TOOLKIT.actividad;
+    return (
+      '<div class="glass rounded-2xl p-5 mb-4">' +
+      '<h2 class="text-xl font-bold">' + esc(a.title) + '</h2>' +
+      '<p class="text-white/60 text-sm mt-1">' + esc(a.subtitle) + '</p>' +
+      '<div class="mt-4 bg-amarillo/10 border border-amarillo/30 rounded-xl p-4">' +
+      '<p class="text-white/50 text-xs font-bold uppercase tracking-wide">El problema de todos</p>' +
+      '<p class="text-amarillo text-lg font-semibold mt-1 leading-snug">' + esc(a.problema) + '</p>' +
+      '</div></div>' +
+
+      '<h3 class="font-bold text-lg mb-3 mt-6">Cómo se corre</h3>' +
+      '<div class="space-y-3 mb-6">' +
+      a.pasos.map(function (p, i) {
+        return (
+          '<div class="glass rounded-2xl p-4 flex gap-4 items-start anim-fade" style="animation-delay:' + i * 50 + 'ms">' +
+          '<div class="shrink-0 w-16 text-amarillo font-bold text-sm tabular-nums">' + esc(p.time) + '</div>' +
+          '<div class="flex-1"><h4 class="font-bold">' + esc(p.title) + '</h4>' +
+          '<p class="text-white/65 text-sm mt-1 leading-snug">' + esc(p.text) + '</p></div></div>'
+        );
+      }).join('') +
+      '</div>' +
+
+      '<h3 class="font-bold text-lg mb-3">Las cinco tarjetas</h3>' +
+      '<div class="grid md:grid-cols-2 gap-3 mb-6">' +
+      a.tarjetas.map(function (t, i) {
+        return (
+          '<article class="glass rounded-2xl p-4 anim-fade" style="animation-delay:' + i * 50 + 'ms">' +
+          '<div class="flex items-center gap-3 mb-2">' +
+          '<span class="w-8 h-8 rounded-lg bg-amarillo text-azul grid place-items-center font-black text-sm shrink-0">' + esc(t.n) + '</span>' +
+          '<h4 class="font-bold text-amarillo">' + esc(t.name) + '</h4></div>' +
+          '<p class="text-sm leading-snug"><b class="text-white/60">Entrega:</b> ' + esc(t.pide) + '</p>' +
+          '<p class="text-sm mt-2 text-red-200/90 leading-snug"><b>Trampa:</b> ' + esc(t.trampa) + '</p>' +
+          '</article>'
+        );
+      }).join('') +
+      '</div>' +
+
+      '<div class="glass rounded-2xl p-5">' +
+      '<h3 class="font-bold mb-2">Notas para el docente</h3><ul class="space-y-2">' +
+      a.notas.map(function (n) {
+        return '<li class="flex gap-3 items-start text-sm"><span class="mt-1.5 w-2 h-2 rounded-full bg-amarillo shrink-0"></span>' +
+               '<span class="text-white/75 leading-snug">' + esc(n) + '</span></li>';
+      }).join('') +
+      '</ul></div>'
+    );
   }
 
   function agenda() {
