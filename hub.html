@@ -299,6 +299,7 @@ body {
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window.FM_STATIC = true;</script>
 <script>
 /*
  * Configuracion de Founder Match.
@@ -1005,9 +1006,11 @@ window.FM = (function () {
    */
   function url(path) {
     var clean = path === '/' ? 'dashboard' : path.replace(/^\//, '');
-    var here = window.location.pathname;
-    if (/\/$/.test(here)) return here + clean + '.html';
-    if (/\.html$/.test(here)) return here.replace(/[^/]+$/, clean + '.html');
+    // FM_STATIC lo inyecta scripts/build-pages.mjs en las paginas publicadas,
+    // donde cada ruta es un archivo .html. En el servidor local son rutas limpias.
+    if (window.FM_STATIC) {
+      return window.location.pathname.replace(/[^/]*$/, '') + clean + '.html';
+    }
     return path;
   }
 
