@@ -857,18 +857,76 @@ window.FM = (function () {
 
   function pin() { return localStorage.getItem(PIN_KEY) || ''; }
 
-  /** Pide el PIN una vez por dispositivo y lo valida contra la base. */
+  async function pinIsValid(value) {
+    var res = await db.rpc('fm_pin_ok', { p_pin: value });
+    return !res.error && res.data === true;
+  }
+
+  /**
+   * Si el link trae ?clave=..., la guarda y la borra de la barra de direcciones.
+   * Asi el docente abre su link una vez y no vuelve a escribir nada.
+   */
+  async function adoptPinFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var value = (params.get('clave') || params.get('pin') || '').trim();
+    if (!value) return;
+    params.delete('clave');
+    params.delete('pin');
+    var limpio = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+    history.replaceState(null, '', limpio);
+    if (await pinIsValid(value)) localStorage.setItem(PIN_KEY, value);
+  }
+
+  /** Ventana propia, no el prompt del navegador: explica qué es la clave. */
+  function askPin() {
+    return new Promise(function (resolve) {
+      var fondo = document.createElement('div');
+      fondo.className = 'fixed inset-0 z-[60] flex items-center justify-center bg-black/75 px-4';
+      fondo.innerHTML =
+        '<div class="glass-strong rounded-2xl p-6 max-w-sm w-full anim-pop">' +
+        '<h3 class="text-lg font-bold">Clave del docente</h3>' +
+        '<p class="text-white/70 text-sm mt-2 leading-relaxed">' +
+        'Protege la proyección: sin ella, un estudiante podría cambiar la card que ves en pantalla. ' +
+        'La tienes en la página de la clase en Notion.</p>' +
+        '<input id="fmPinInput" type="password" class="field mt-4" placeholder="Escribe la clave" autocomplete="off">' +
+        '<p id="fmPinError" class="text-red-300 text-sm mt-2" style="display:none">Esa clave no es. Intenta de nuevo.</p>' +
+        '<div class="flex gap-2 mt-4">' +
+        '<button id="fmPinCancel" class="btn btn-ghost flex-1">Ahora no</button>' +
+        '<button id="fmPinOk" class="btn btn-primary flex-1">Entrar</button>' +
+        '</div></div>';
+      document.body.appendChild(fondo);
+
+      var input = fondo.querySelector('#fmPinInput');
+      var error = fondo.querySelector('#fmPinError');
+      var listo = function (valor) {
+        fondo.remove();
+        resolve(valor);
+      };
+
+      var probar = async function () {
+        var valor = input.value.trim();
+        if (!valor) return;
+        if (await pinIsValid(valor)) {
+          localStorage.setItem(PIN_KEY, valor);
+          listo(true);
+        } else {
+          error.style.display = '';
+          input.value = '';
+          input.focus();
+        }
+      };
+
+      fondo.querySelector('#fmPinOk').addEventListener('click', probar);
+      fondo.querySelector('#fmPinCancel').addEventListener('click', function () { listo(false); });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') probar(); });
+      input.focus();
+    });
+  }
+
+  /** Pide la clave una sola vez por dispositivo. */
   async function ensurePin() {
     if (pin()) return true;
-    var value = window.prompt('PIN del docente:');
-    if (!value) return false;
-    var res = await db.rpc('fm_set_card', { p_pin: value.trim(), p_student_id: '' });
-    if (res.error) {
-      toast('PIN incorrecto', 'error');
-      return false;
-    }
-    localStorage.setItem(PIN_KEY, value.trim());
-    return true;
+    return askPin();
   }
 
   async function setCard(id) {
@@ -1035,6 +1093,8 @@ window.FM = (function () {
       reader.readAsDataURL(file);
     });
   }
+
+  adoptPinFromUrl();
 
   return {
     db: db,
