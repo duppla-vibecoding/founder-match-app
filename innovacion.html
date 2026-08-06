@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Founder Match · Tu perfil</title>
+<title>¿Qué es innovación y cómo se hace? · MABI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1135,236 +1135,404 @@ window.FM = (function () {
 })();
 
 </script>
+<script>
+/*
+ * Presentacion del bloque de innovacion (clase de hoy).
+ * Se proyecta en /innovacion. Es independiente del deck del curso.
+ *
+ * PARA EDITAR: cambia el texto y recarga la pagina.
+ * Layouts: cover | statement | bullets | cards | quote | steps | table
+ */
+window.SLIDES = [
+  {
+    layout: 'cover',
+    eyebrow: 'Innovación & Emprendimiento Digital · MABI',
+    title: '¿Qué es innovación y cómo se hace?',
+    subtitle: 'Universidad de La Salle',
+    footer: 'Prof. Jan Sebastián Espinosa',
+  },
+  {
+    layout: 'statement',
+    eyebrow: 'Bloque 1 de hoy',
+    title: '¿Qué es innovación?',
+    body: [
+      'Antes de armar equipos, necesitamos ponernos de acuerdo en qué significa la palabra.',
+      'Y la respuesta no es la que la mayoría tiene en la cabeza.',
+    ],
+  },
+  {
+    layout: 'bullets',
+    eyebrow: 'Calentamiento · levanten la mano',
+    title: '¿Invento o innovación?',
+    bullets: [
+      'La rueda.',
+      'La maleta con ruedas.',
+      'El motor de combustión.',
+      'El servicio de taxi por app.',
+      'La vacuna contra la polio.',
+    ],
+    footer: 'No lo piensen mucho. Voten con la mano y discutimos.',
+  },
+  {
+    layout: 'quote',
+    eyebrow: 'La respuesta incómoda',
+    quote: 'La maleta con ruedas llegó en 1970.',
+    body: [
+      'La rueda tenía 5.000 años. La maleta, siglos. El hombre ya había pisado la Luna.',
+      'Nadie inventó nada nuevo: alguien conectó dos cosas que ya existían para resolver algo que dolía.',
+    ],
+  },
+  {
+    layout: 'statement',
+    eyebrow: 'La definición que vamos a usar',
+    title: 'Innovar no es inventar. Es crear valor que alguien adopta.',
+    body: [
+      'Idea × ejecución × adopción. Si cualquiera de los tres es cero, el resultado es cero.',
+      'Si nadie lo usa, no fue innovación: fue un invento.',
+    ],
+    footer: 'Por eso el curso no empieza por ideas, sino por problemas.',
+  },
+  {
+    layout: 'table',
+    eyebrow: 'Cómo se hace',
+    title: 'Cinco metodologías, cinco preguntas distintas',
+    table: {
+      head: ['Metodología', 'La pregunta que responde'],
+      rows: [
+        ['Design Thinking', '¿Qué le duele de verdad a la persona?'],
+        ['Lean Startup', '¿Cuál es el supuesto que me hunde si resulta falso?'],
+        ['Agile / Scrum', '¿Qué puedo entregar y mostrar en dos semanas?'],
+        ['Innovación Abierta', '¿Quién allá afuera ya resolvió parte de esto?'],
+        ['Design Sprint', '¿Puedo tener una respuesta creíble en cinco días?'],
+      ],
+    },
+    footer: 'No compiten entre sí. Se usan en momentos distintos.',
+  },
+  {
+    layout: 'steps',
+    eyebrow: 'Metodología 1',
+    title: 'Design Thinking: las personas en el centro',
+    steps: [
+      { n: '1', title: 'Empatizar', text: 'Entrevistar y observar a quien sufre el problema.' },
+      { n: '2', title: 'Definir', text: 'Una sola frase de problema, con usuario y necesidad.' },
+      { n: '3', title: 'Idear', text: 'Muchas opciones antes de enamorarse de una.' },
+      { n: '4', title: 'Prototipar', text: 'Lo más barato que se pueda mostrar.' },
+      { n: '5', title: 'Probar', text: 'Ponerlo frente a usuarios reales y escuchar.' },
+    ],
+  },
+  {
+    layout: 'cards',
+    eyebrow: 'Metodologías 2 a 5',
+    title: 'Las otras cuatro, en una frase',
+    cards: [
+      { icon: '🔁', title: 'Lean Startup', text: 'Construir un producto mínimo viable, medir qué pasa y aprender. Repetir o cambiar de rumbo.' },
+      { icon: '⚡', title: 'Agile / Scrum', text: 'Partir el proyecto en entregas cortas para corregir sobre la marcha, no al final.' },
+      { icon: '🤝', title: 'Innovación Abierta', text: 'Traer ideas, talento y tecnología de afuera: universidades, socios, clientes, competencia.' },
+      { icon: '🏃', title: 'Design Sprint', text: 'De la idea a una prueba con usuarios reales en cinco días. Ni uno más.' },
+    ],
+  },
+  {
+    layout: 'statement',
+    eyebrow: 'Actividad · 30 minutos',
+    title: 'El mismo problema, cinco caminos',
+    body: [
+      'Nos dividimos en cinco grupos. A cada grupo le toca una metodología distinta.',
+      'Todos atacan el mismo problema, pero cada uno solo puede usar su método.',
+    ],
+    footer: 'Los grupos de ahora son al azar. Los de verdad los armamos después.',
+  },
+  {
+    layout: 'quote',
+    eyebrow: 'El problema de todos',
+    quote: 'Llegas a clase a las 6:30 p. m. después de trabajar todo el día. No has comido.',
+    body: [
+      'Es real, les pasa hoy, y nadie lo ha resuelto bien.',
+      '12 minutos para trabajar. 90 segundos para presentar.',
+    ],
+  },
+  {
+    layout: 'steps',
+    eyebrow: 'Qué entrega cada grupo',
+    title: 'Una sola cosa, la que su método pide primero',
+    steps: [
+      { n: '1', title: 'Design Thinking', text: 'A quién van a entrevistar y las 3 preguntas que le harían.' },
+      { n: '2', title: 'Lean Startup', text: 'El supuesto más riesgoso y el experimento de $0 para probarlo esta semana.' },
+      { n: '3', title: 'Agile', text: 'El problema partido en 3 entregas y qué se demuestra al final de la primera.' },
+      { n: '4', title: 'Inn. Abierta', text: 'Quién afuera ya resolvió parte de esto y qué le pedirían.' },
+      { n: '5', title: 'Design Sprint', text: 'El plan de 5 días: qué se prototipa el jueves y con quién se prueba el viernes.' },
+    ],
+    footer: 'Prohibido decir la solución. Solo el primer movimiento del método.',
+  },
+  {
+    layout: 'statement',
+    eyebrow: 'Cierre del bloque',
+    title: 'Un mismo problema. Cinco primeros movimientos distintos.',
+    body: [
+      'Ninguno está equivocado. Cada método sirve para reducir un tipo distinto de incertidumbre.',
+      'Elegir mal el método cuesta meses. Ese es el verdadero riesgo, no la idea.',
+    ],
+    footer: 'Y para escoger bien hace falta un equipo que piense distinto. Ahí entra el bloque 2.',
+  },
 
-<div class="min-h-screen px-4 py-6 md:py-10">
-  <div class="max-w-2xl mx-auto">
-    <header class="text-center mb-7">
-      <div class="w-14 h-14 rounded-2xl bg-amarillo text-azul grid place-items-center font-black text-xl mx-auto mb-3">FM</div>
-      <h1 class="text-2xl md:text-3xl font-extrabold">Founder Match</h1>
-      <p class="text-white/60 text-sm mt-1">Cuéntanos quién eres. Con esto se arma tu Founder Card.</p>
-    </header>
+  {
+    layout: 'bullets',
+    eyebrow: 'Para seguir después de clase',
+    title: 'Más de 90 técnicas, explicadas paso a paso',
+    bullets: [
+      'designthinking.es/tecnicas-de-innovacion — el catálogo completo, gratis.',
+      'Están ordenadas por fase: empatía, definición, ideación, prototipado y testeo.',
+      'Cada ficha dice cuánta gente necesitas, cuánto dura y qué tan difícil es.',
+      'Para la próxima sesión: elijan una técnica de empatía y úsenla con una persona real.',
+    ],
+    footer: 'El link también está en el toolkit del curso.',
+  },
+  {
+    layout: 'statement',
+    eyebrow: 'Siguiente bloque',
+    title: 'Ahora sí: con quién vas a construir',
+    body: [
+      'Los grupos de la actividad fueron al azar. Los del semestre no.',
+      'Vamos a armarlos con datos: quién complementa a quién.',
+    ],
+    footer: 'Abre el formulario en tu celular.',
+  },
+];
 
-    <div id="progressWrap" class="glass rounded-full h-2 mb-6 overflow-hidden">
-      <div id="progressBar" class="h-full bg-amarillo transition-all duration-300" style="width: 0%"></div>
-    </div>
+</script>
 
-    <form id="form" class="space-y-5">
-      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
-        <h2 class="font-bold text-lg text-amarillo">1 · Quién eres</h2>
-
-        <div>
-          <label class="label" for="name">Nombre completo *</label>
-          <input id="name" name="name" class="field" required maxlength="120" autocomplete="name" placeholder="María Fernanda Rojas">
-        </div>
-
-        <div>
-          <label class="label">Foto</label>
-          <div class="flex items-center gap-4">
-            <div id="photoPreview" class="avatar w-20 h-20 rounded-2xl text-xl shrink-0">?</div>
-            <div class="flex-1">
-              <input id="photo" type="file" accept="image/*"
-                class="block w-full text-sm text-white/70 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amarillo file:text-azul">
-              <p class="hint" id="photoHint">Puedes elegirla de tu galería o tomarla con la cámara.</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <label class="label" for="role">Rol profesional *</label>
-          <input id="role" name="role" class="field" required maxlength="120" placeholder="Analista de datos / Diseñadora UX / Gerente comercial">
-        </div>
-
-        <div>
-          <label class="label" for="industry">Industria de interés *</label>
-          <input id="industry" name="industry" class="field" required maxlength="120" placeholder="Salud, educación, fintech, agro, logística…">
-        </div>
-      </section>
-
-      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
-        <h2 class="font-bold text-lg text-amarillo">2 · Qué sabes hacer</h2>
-
-        <div>
-          <label class="label" for="technicalSkills">Habilidades técnicas *</label>
-          <input id="technicalSkills" name="technicalSkills" class="field" required maxlength="300" placeholder="SQL, Python, Power BI, finanzas… (sepáralas con comas)">
-          <p class="hint">Separa con comas. La primera aparecerá en tu card.</p>
-        </div>
-
-        <div>
-          <label class="label" for="softSkills">Habilidades blandas *</label>
-          <input id="softSkills" name="softSkills" class="field" required maxlength="300" placeholder="Comunicación, negociación, liderazgo…">
-        </div>
-
-        <div>
-          <label class="label" for="experience">Experiencia previa</label>
-          <textarea id="experience" name="experience" class="field" rows="2" maxlength="600" placeholder="Dónde has trabajado y en qué"></textarea>
-        </div>
-      </section>
-
-      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
-        <h2 class="font-bold text-lg text-amarillo">3 · Qué te mueve</h2>
-
-        <div>
-          <label class="label" for="purpose">Propósito de vida o profesional *</label>
-          <textarea id="purpose" name="purpose" class="field" rows="2" required maxlength="600" placeholder="Quiero que la educación técnica llegue a municipios pequeños."></textarea>
-          <p class="hint">La primera frase se convierte en el lema de tu card.</p>
-        </div>
-
-        <div>
-          <label class="label" for="passions">Pasiones *</label>
-          <input id="passions" name="passions" class="field" required maxlength="300" placeholder="Educación, deporte, música, sostenibilidad…">
-        </div>
-
-        <div>
-          <label class="label" for="problemsToSolve">Problemas que quieres resolver en el mundo *</label>
-          <textarea id="problemsToSolve" name="problemsToSolve" class="field" rows="2" required maxlength="600" placeholder="El acceso a crédito para tenderos de barrio."></textarea>
-        </div>
-
-        <div>
-          <label class="label" for="hobbies">Hobbies</label>
-          <input id="hobbies" name="hobbies" class="field" maxlength="300" placeholder="Correr, cocinar, ajedrez…">
-        </div>
-
-        <div>
-          <label class="label" for="personality">Personalidad</label>
-          <input id="personality" name="personality" class="field" maxlength="300" placeholder="Introvertida, analítica, me cargo de energía en grupo…">
-        </div>
-      </section>
-
-      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
-        <h2 class="font-bold text-lg text-amarillo">4 · Cómo trabajas en equipo</h2>
-
-        <div>
-          <label class="label" for="workStyle">Estilo de trabajo</label>
-          <input id="workStyle" name="workStyle" class="field" maxlength="300" placeholder="Estructurado, por sprints, necesito silencio para producir…">
-        </div>
-
-        <div>
-          <label class="label" for="values">Valores</label>
-          <input id="values" name="values" class="field" maxlength="300" placeholder="Honestidad, disciplina, impacto social…">
-        </div>
-
-        <div>
-          <label class="label" for="expectations">Expectativas del programa</label>
-          <textarea id="expectations" name="expectations" class="field" rows="2" maxlength="600" placeholder="Qué esperas llevarte de la maestría"></textarea>
-        </div>
-
-        <div>
-          <label class="label" for="whereAddsValue">Dónde agregas más valor en un equipo *</label>
-          <textarea id="whereAddsValue" name="whereAddsValue" class="field" rows="2" required maxlength="600" placeholder="Ordeno la información y convierto ideas sueltas en un plan."></textarea>
-        </div>
-
-        <div>
-          <label class="label" for="whereNeedsHelp">Dónde necesitas ayuda en un equipo *</label>
-          <textarea id="whereNeedsHelp" name="whereNeedsHelp" class="field" rows="2" required maxlength="600" placeholder="Me cuesta vender la idea frente a un cliente."></textarea>
-        </div>
-      </section>
-
-      <button id="submitBtn" type="submit" class="btn btn-primary w-full text-base py-4">Crear mi Founder Card</button>
-      <p class="text-center text-white/40 text-xs pb-8">
-        Tus respuestas solo se usan para armar los equipos de la clase de hoy.
-      </p>
-    </form>
-
-    <div id="done" class="hidden"></div>
+<div class="min-h-screen flex flex-col">
+  <div class="h-1 bg-white/10">
+    <div id="progress" class="h-full bg-amarillo transition-all duration-300" style="width:0%"></div>
   </div>
+
+  <main id="stage" class="flex-1 flex items-center justify-center px-5 py-8 md:px-14"></main>
+
+  <footer class="flex items-center justify-between gap-3 px-5 pb-5 md:px-14">
+    <button id="prev" class="btn btn-ghost">←</button>
+    <div class="flex-1 flex items-center justify-center gap-1.5 flex-wrap" id="dots"></div>
+    <div class="flex items-center gap-3">
+      <span id="counter" class="text-white/50 text-sm tabular-nums font-semibold"></span>
+      <button id="next" class="btn btn-primary">→</button>
+    </div>
+  </footer>
 </div>
 
 <script>
-  var photoData = '';
-  var form = document.getElementById('form');
-  var fields = Array.prototype.slice.call(form.querySelectorAll('input[name], textarea[name]'));
+  var index = 0;
+  var slides = window.SLIDES || [];
 
-  function updateProgress() {
-    var filled = fields.filter(function (f) { return f.value.trim().length > 0; }).length;
-    var total = fields.length + 1;
-    var done = filled + (photoData ? 1 : 0);
-    document.getElementById('progressBar').style.width = Math.round((done / total) * 100) + '%';
-  }
-  fields.forEach(function (f) { f.addEventListener('input', updateProgress); });
+  function esc(v) { return FM.esc(v); }
 
-  document.getElementById('photo').addEventListener('change', async function (event) {
-    var file = event.target.files && event.target.files[0];
-    if (!file) return;
-    var hint = document.getElementById('photoHint');
-    hint.textContent = 'Procesando la foto…';
-    try {
-      photoData = await FM.compressImage(file, 720, 0.72);
-      var preview = document.getElementById('photoPreview');
-      preview.innerHTML = '';
-      preview.style.backgroundImage = 'url(' + photoData + ')';
-      preview.style.backgroundSize = 'cover';
-      preview.style.backgroundPosition = 'center';
-      hint.textContent = 'Foto lista (' + Math.round(photoData.length / 1400) + ' KB aprox).';
-      updateProgress();
-    } catch (err) {
-      photoData = '';
-      hint.textContent = 'No se pudo usar esa imagen. Intenta con otra.';
-      FM.toast(err.message, 'error');
-    }
-  });
-
-  document.getElementById('name').addEventListener('input', function () {
-    if (!photoData) document.getElementById('photoPreview').textContent = FM.initials(this.value);
-  });
-
-  form.addEventListener('submit', async function (event) {
-    event.preventDefault();
-    var btn = document.getElementById('submitBtn');
-    var payload = { photo: photoData };
-    fields.forEach(function (f) { payload[f.name] = f.value.trim(); });
-
-    btn.disabled = true;
-    btn.textContent = 'Creando tu card…';
-    try {
-      var res = await FM.submit(payload, photoData);
-      FM.setStudent(res.id, payload.name);
-      showCard(payload, res.card);
-    } catch (err) {
-      FM.toast(err.message, 'error');
-      btn.disabled = false;
-      btn.textContent = 'Crear mi Founder Card';
-    }
-  });
-
-  function showCard(profile, card) {
-    form.classList.add('hidden');
-    document.getElementById('progressWrap').classList.add('hidden');
-    var host = document.getElementById('done');
-    host.classList.remove('hidden');
-    host.innerHTML =
-      '<div class="glass-strong rounded-3xl p-6 anim-pop text-center">' +
-      (photoData
-        ? '<img src="' + photoData + '" class="avatar w-28 h-28 rounded-2xl mx-auto mb-4" alt="">'
-        : '<div class="avatar w-28 h-28 rounded-2xl mx-auto mb-4 text-3xl">' + FM.esc(FM.initials(profile.name)) + '</div>') +
-      '<p class="chip mx-auto mb-3">' + FM.esc(card.archetype) + '</p>' +
-      '<h2 class="text-2xl font-extrabold">' + FM.esc(profile.name) + '</h2>' +
-      '<p class="text-white/60 text-sm">' + FM.esc(profile.role) + ' · ' + FM.esc(card.industry) + '</p>' +
-      '<p class="text-amarillo font-semibold mt-4 text-lg leading-snug">“' + FM.esc(card.tagline) + '”</p>' +
-      '<div class="grid gap-3 mt-5 text-left">' +
-      block('Superpoder', card.superpower) +
-      block('Misión', card.missionStatement) +
-      block('Busca', card.lookingFor) +
-      (card.topStrengths.length ? block('Fortalezas', card.topStrengths.join(' · ')) : '') +
-      (card.topPassions.length ? block('Pasiones', card.topPassions.join(' · ')) : '') +
-      (card.problemFocus ? block('Problema que quiere resolver', card.problemFocus) : '') +
-      (card.funFact ? block('Dato curioso', card.funFact) : '') +
-      '</div>' +
-      '<a href="' + FM.url('/vote') + '" class="btn btn-primary w-full mt-6">Ir a votar</a>' +
-      '<p class="text-white/45 text-xs mt-3">Espera a que el docente proyecte la primera card.</p>' +
-      '</div>';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function block(title, value) {
+  function bodyHtml(body) {
+    if (!body || !body.length) return '';
     return (
-      '<div class="bg-white/5 border border-white/10 rounded-xl p-3">' +
-      '<p class="text-white/45 text-xs font-semibold uppercase tracking-wide">' + FM.esc(title) + '</p>' +
-      '<p class="text-sm mt-1 leading-snug">' + FM.esc(value) + '</p></div>'
+      '<div class="space-y-3 mt-6 max-w-3xl">' +
+      body
+        .map(function (p) {
+          return '<p class="text-lg md:text-2xl text-white/75 leading-relaxed">' + esc(p) + '</p>';
+        })
+        .join('') +
+      '</div>'
     );
   }
 
-  if (FM.studentId()) {
-    FM.toast('Ya te habías registrado en este celular. Si envías de nuevo, se crea otra card.');
+  function eyebrowHtml(text) {
+    if (!text) return '';
+    return '<p class="chip mb-5">' + esc(text) + '</p>';
   }
-  updateProgress();
+
+  function footerHtml(text) {
+    if (!text) return '';
+    return '<p class="mt-8 text-amarillo/85 text-base md:text-lg font-semibold">' + esc(text) + '</p>';
+  }
+
+  function renderSlide(slide) {
+    switch (slide.layout) {
+      case 'cover':
+        return (
+          '<div class="text-center max-w-4xl anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<h1 class="text-5xl md:text-7xl font-black leading-[1.05]">' + esc(slide.title) + '</h1>' +
+          (slide.subtitle ? '<p class="text-xl md:text-3xl text-white/70 mt-5">' + esc(slide.subtitle) + '</p>' : '') +
+          '<div class="w-24 h-1.5 bg-amarillo rounded-full mx-auto mt-8"></div>' +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+
+      case 'quote':
+        return (
+          '<div class="max-w-4xl anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<p class="text-4xl md:text-6xl font-black leading-tight text-amarillo">“' + esc(slide.quote) + '”</p>' +
+          bodyHtml(slide.body) +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+
+      case 'bullets':
+        return (
+          '<div class="max-w-4xl w-full anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<h2 class="text-4xl md:text-5xl font-black leading-tight">' + esc(slide.title) + '</h2>' +
+          '<ul class="mt-7 space-y-4">' +
+          (slide.bullets || [])
+            .map(function (b) {
+              return (
+                '<li class="flex gap-4 items-start">' +
+                '<span class="mt-2 w-2.5 h-2.5 rounded-full bg-amarillo shrink-0"></span>' +
+                '<span class="text-lg md:text-2xl text-white/80 leading-snug">' + esc(b) + '</span></li>'
+              );
+            })
+            .join('') +
+          '</ul>' +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+
+      case 'cards':
+        return (
+          '<div class="max-w-6xl w-full anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<h2 class="text-4xl md:text-5xl font-black mb-7">' + esc(slide.title) + '</h2>' +
+          '<div class="grid md:grid-cols-' + Math.min((slide.cards || []).length, 4) + ' gap-4">' +
+          (slide.cards || [])
+            .map(function (c, i) {
+              return (
+                '<div class="glass rounded-2xl p-6 anim-fade" style="animation-delay:' + i * 90 + 'ms">' +
+                '<div class="text-4xl mb-3">' + esc(c.icon || '•') + '</div>' +
+                '<h3 class="font-bold text-xl text-amarillo">' + esc(c.title) + '</h3>' +
+                '<p class="text-white/75 mt-2 leading-snug">' + esc(c.text) + '</p></div>'
+              );
+            })
+            .join('') +
+          '</div>' +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+
+      case 'steps':
+        return (
+          '<div class="max-w-6xl w-full anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<h2 class="text-4xl md:text-5xl font-black mb-8">' + esc(slide.title) + '</h2>' +
+          '<div class="grid md:grid-cols-5 gap-3">' +
+          (slide.steps || [])
+            .map(function (s, i) {
+              return (
+                '<div class="glass rounded-2xl p-5 anim-fade" style="animation-delay:' + i * 80 + 'ms">' +
+                '<div class="w-10 h-10 rounded-xl bg-amarillo text-azul grid place-items-center font-black mb-3">' + esc(s.n) + '</div>' +
+                '<h3 class="font-bold text-lg">' + esc(s.title) + '</h3>' +
+                '<p class="text-white/65 text-sm mt-1.5 leading-snug">' + esc(s.text) + '</p></div>'
+              );
+            })
+            .join('') +
+          '</div>' +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+
+      case 'table':
+        return (
+          '<div class="max-w-5xl w-full anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<h2 class="text-4xl md:text-5xl font-black mb-7">' + esc(slide.title) + '</h2>' +
+          '<div class="glass rounded-2xl overflow-hidden">' +
+          '<table class="w-full text-left">' +
+          '<thead><tr class="bg-white/10">' +
+          (slide.table.head || [])
+            .map(function (h) {
+              return '<th class="px-5 py-3 text-amarillo font-bold text-base md:text-lg">' + esc(h) + '</th>';
+            })
+            .join('') +
+          '</tr></thead><tbody>' +
+          (slide.table.rows || [])
+            .map(function (row) {
+              return (
+                '<tr class="border-t border-white/10">' +
+                row
+                  .map(function (cell) {
+                    return '<td class="px-5 py-3 text-white/80 text-base md:text-lg">' + esc(cell) + '</td>';
+                  })
+                  .join('') +
+                '</tr>'
+              );
+            })
+            .join('') +
+          '</tbody></table></div>' +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+
+      default:
+        return (
+          '<div class="max-w-4xl anim-pop">' +
+          eyebrowHtml(slide.eyebrow) +
+          '<h2 class="text-4xl md:text-6xl font-black leading-tight">' + esc(slide.title) + '</h2>' +
+          bodyHtml(slide.body) +
+          footerHtml(slide.footer) +
+          '</div>'
+        );
+    }
+  }
+
+  function render() {
+    document.getElementById('stage').innerHTML = renderSlide(slides[index]);
+    document.getElementById('counter').textContent = index + 1 + ' / ' + slides.length;
+    document.getElementById('progress').style.width = ((index + 1) / slides.length) * 100 + '%';
+    document.getElementById('dots').innerHTML = slides
+      .map(function (_, i) {
+        return (
+          '<button data-i="' + i + '" class="dot w-2.5 h-2.5 rounded-full transition ' +
+          (i === index ? 'bg-amarillo scale-125' : 'bg-white/25 hover:bg-white/50') +
+          '"></button>'
+        );
+      })
+      .join('');
+    Array.prototype.forEach.call(document.querySelectorAll('.dot'), function (dot) {
+      dot.addEventListener('click', function () {
+        go(Number(dot.getAttribute('data-i')));
+      });
+    });
+    if (window.location.hash !== '#' + (index + 1)) {
+      history.replaceState(null, '', '#' + (index + 1));
+    }
+  }
+
+  function go(next) {
+    index = Math.max(0, Math.min(next, slides.length - 1));
+    render();
+  }
+
+  document.getElementById('prev').addEventListener('click', function () { go(index - 1); });
+  document.getElementById('next').addEventListener('click', function () { go(index + 1); });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+      event.preventDefault();
+      go(index + 1);
+    } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+      event.preventDefault();
+      go(index - 1);
+    } else if (event.key === 'Home') {
+      go(0);
+    } else if (event.key === 'End') {
+      go(slides.length - 1);
+    } else if (event.key === 'f') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  var startX = null;
+  document.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; });
+  document.addEventListener('touchend', function (e) {
+    if (startX === null) return;
+    var delta = e.changedTouches[0].clientX - startX;
+    if (Math.abs(delta) > 60) go(index + (delta < 0 ? 1 : -1));
+    startX = null;
+  });
+
+  var fromHash = Number((window.location.hash || '').replace('#', ''));
+  if (fromHash >= 1 && fromHash <= slides.length) index = fromHash - 1;
+  render();
 </script>
