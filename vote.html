@@ -727,22 +727,21 @@ window.FM = (function () {
     if (name) localStorage.setItem(NAME_KEY, name);
   }
 
-  function votedIds() {
-    try { return JSON.parse(localStorage.getItem(VOTED_KEY) || '[]'); } catch (e) { return []; }
-  }
-
-  function markVoted(targetId) {
-    var list = votedIds();
-    if (list.indexOf(targetId) === -1) {
-      list.push(targetId);
-      localStorage.setItem(VOTED_KEY, JSON.stringify(list));
-    }
-  }
-
   function forgetStudent() {
     localStorage.removeItem(STUDENT_KEY);
     localStorage.removeItem(NAME_KEY);
     localStorage.removeItem(VOTED_KEY);
+  }
+
+  /** Si ya voto por esa persona. Se pregunta a la base, no al navegador:
+   *  asi el estudiante puede cambiar de celular sin perder su historial. */
+  async function hasVoted(targetId) {
+    var voter = studentId();
+    if (!voter) return false;
+    var rows = unwrap(
+      await db.from('fm_votes').select('id').eq('voter_id', voter).eq('target_id', targetId)
+    );
+    return rows.length > 0;
   }
 
   /* --------------------------------- Lectura -------------------------------- */
@@ -852,7 +851,6 @@ window.FM = (function () {
       }
       throw new Error(res.error.message);
     }
-    markVoted(targetId);
   }
 
   /* --------------------------- Acciones del docente -------------------------- */
@@ -1053,8 +1051,7 @@ window.FM = (function () {
     studentName: studentName,
     setStudent: setStudent,
     forgetStudent: forgetStudent,
-    votedIds: votedIds,
-    markVoted: markVoted,
+    hasVoted: hasVoted,
 
     students: students,
     studentsFull: studentsFull,
@@ -1086,7 +1083,7 @@ window.FM = (function () {
     </div>
     <div class="flex items-center gap-2 text-xs">
       <span id="liveDot" class="w-2 h-2 rounded-full bg-white/30"></span>
-      <span id="me" class="text-white/50"></span>
+      <button id="me" class="text-white/50 underline decoration-white/25 underline-offset-2"></button>
     </div>
   </header>
 
@@ -1099,7 +1096,7 @@ window.FM = (function () {
 
 <script>
 
-  var state = { card: null, voting: false };
+  var state = { card: null, voting: false, voted: false, students: [], picking: false };
 
   function esc(v) { return FM.esc(v); }
 
@@ -1114,16 +1111,105 @@ window.FM = (function () {
     );
   }
 
+  /* ------------------------- Elegir quien soy ------------------------- */
+
+  function renderPicker() {
+    var host = document.getElementById('screen');
+
+    if (state.students.length === 0) {
+      host.innerHTML = waiting(
+        'Todavia no hay nadie registrado',
+        'Llena el formulario para crear tu Founder Card y aparecer en la lista.',
+        '<a href="' + FM.url('/form') + '" class="btn btn-primary w-full mt-5">Llenar el formulario</a>'
+      );
+      return;
+    }
+
+    host.innerHTML =
+      '<div class="w-full anim-fade">' +
+      '<div class="glass rounded-3xl p-5">' +
+      '<h2 class="text-xl font-bold text-center">&iquest;Qui&eacute;n eres?</h2>' +
+      '<p class="text-white/55 text-sm text-center mt-1">Toca tu nombre para empezar a votar.</p>' +
+      '<input id="buscar" class="field mt-4" placeholder="Busca tu nombre" autocomplete="off">' +
+      '<div id="lista" class="mt-3 space-y-2 max-h-[55vh] overflow-y-auto pr-1"></div>' +
+      '<a href="' + FM.url('/form') + '" class="btn btn-ghost w-full mt-4">No estoy en la lista</a>' +
+      '</div></div>';
+
+    document.getElementById('buscar').addEventListener('input', function () {
+      pintarLista(this.value);
+    });
+    pintarLista('');
+  }
+
+  /** Busca por palabra completa: escribir "ana" no debe traer "Mariana". */
+  function coincide(nombre, texto) {
+    if (!texto) return true;
+    var limpio = function (v) {
+      return String(v).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    };
+    var palabras = limpio(nombre).split(/\s+/);
+    return limpio(texto).trim().split(/\s+/).every(function (buscada) {
+      return palabras.some(function (p) { return p.indexOf(buscada) === 0; });
+    });
+  }
+
+  function pintarLista(texto) {
+    var lista = document.getElementById('lista');
+    if (!lista) return;
+    var visibles = state.students.filter(function (s) { return coincide(s.name, texto); });
+
+    if (visibles.length === 0) {
+      lista.innerHTML = '<p class="text-white/45 text-sm text-center py-6">Nadie con ese nombre.</p>';
+      return;
+    }
+
+    lista.innerHTML = visibles
+      .map(function (s) {
+        return (
+          '<button data-id="' + esc(s.id) + '" data-name="' + esc(s.name) + '" ' +
+          'class="fila w-full text-left rounded-xl p-3 flex items-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 transition">' +
+          FM.avatarHtml(s, 'w-11 h-11 text-sm rounded-xl shrink-0') +
+          '<span class="min-w-0"><span class="block font-semibold truncate">' + esc(s.name) + '</span>' +
+          '<span class="block text-white/45 text-xs truncate">' + esc(s.role || '') + '</span></span></button>'
+        );
+      })
+      .join('');
+
+    Array.prototype.forEach.call(lista.querySelectorAll('.fila'), function (fila) {
+      fila.addEventListener('click', function () {
+        elegirme(fila.getAttribute('data-id'), fila.getAttribute('data-name'));
+      });
+    });
+    FM.hydratePhotos(lista);
+  }
+
+  async function elegirme(id, nombre) {
+    FM.setStudent(id, nombre);
+    state.picking = false;
+    pintarNombre();
+    FM.toast('Hola, ' + nombre.split(' ')[0], 'ok');
+    await refrescarVoto();
+    render();
+  }
+
+  function pintarNombre() {
+    var boton = document.getElementById('me');
+    var nombre = FM.studentName();
+    boton.textContent = nombre ? 'Hola, ' + nombre.split(' ')[0] + ' · cambiar' : '';
+  }
+
+  /* ------------------------------ La card ----------------------------- */
+
+  async function refrescarVoto() {
+    state.voted = state.card ? await FM.hasVoted(state.card.id) : false;
+  }
+
   function render() {
     var host = document.getElementById('screen');
     setActionBar('');
 
-    if (!FM.studentId()) {
-      host.innerHTML = waiting(
-        'Primero crea tu perfil',
-        'Necesitamos tu Founder Card para poder emparejarte con un equipo.',
-        '<a href="' + FM.url('/form') + '" class="btn btn-primary w-full mt-5">Llenar el formulario</a>'
-      );
+    if (!FM.studentId() || state.picking) {
+      renderPicker();
       return;
     }
 
@@ -1138,7 +1224,6 @@ window.FM = (function () {
     var s = state.card;
     var card = s.card || {};
     var isMe = s.id === FM.studentId();
-    var voted = FM.votedIds().indexOf(s.id) !== -1;
 
     host.innerHTML =
       '<div class="w-full anim-pop">' +
@@ -1162,7 +1247,7 @@ window.FM = (function () {
       '</div></div>';
 
     FM.hydratePhotos(host);
-    setActionBar(footer(isMe, voted));
+    setActionBar(footer(isMe, state.voted));
 
     var heart = document.getElementById('btnHeart');
     var doubt = document.getElementById('btnDoubt');
@@ -1214,10 +1299,11 @@ window.FM = (function () {
     state.voting = true;
     try {
       await FM.vote(state.card.id, type);
+      state.voted = true;
       FM.toast(type === 'heart' ? '¡Voto registrado! ❤️' : 'Voto registrado 🤔', 'ok');
     } catch (err) {
       if (err.already) {
-        FM.markVoted(state.card.id);
+        state.voted = true;
         FM.toast('Ya habías votado por esta persona');
       } else {
         FM.toast(err.message, 'error');
@@ -1228,24 +1314,40 @@ window.FM = (function () {
     }
   }
 
-  async function loadCurrent() {
-    var s = await FM.state();
-    state.card = s.current_card_id ? await FM.student(s.current_card_id) : null;
+  async function boot() {
+    state.students = await FM.students();
+    var estado = await FM.state();
+    state.card = estado.current_card_id ? await FM.student(estado.current_card_id) : null;
+    await refrescarVoto();
+    pintarNombre();
     render();
   }
+
+  document.getElementById('me').addEventListener('click', function () {
+    if (!FM.studentId()) return;
+    state.picking = true;
+    render();
+  });
 
   FM.live({
     onStatus: function (ok) {
       document.getElementById('liveDot').className =
         'w-2 h-2 rounded-full ' + (ok ? 'bg-amarillo anim-pulse' : 'bg-red-400');
     },
-    state: function (payload) {
+    student: function (fila) {
+      if (!state.students.some(function (s) { return s.id === fila.id; })) {
+        state.students.push(fila);
+        state.students.sort(function (a, b) { return a.ts - b.ts; });
+        if (state.picking || !FM.studentId()) pintarLista(document.getElementById('buscar') ? document.getElementById('buscar').value : '');
+      }
+    },
+    state: async function (payload) {
       state.card = payload.student || null;
+      await refrescarVoto();
       render();
       if (payload.student && navigator.vibrate) navigator.vibrate(40);
     },
   });
 
-  document.getElementById('me').textContent = FM.studentName() ? 'Hola, ' + FM.studentName().split(' ')[0] : '';
-  loadCurrent().catch(function (err) { FM.toast(err.message, 'error'); });
+  boot().catch(function (err) { FM.toast(err.message, 'error'); });
 </script>

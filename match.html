@@ -727,22 +727,21 @@ window.FM = (function () {
     if (name) localStorage.setItem(NAME_KEY, name);
   }
 
-  function votedIds() {
-    try { return JSON.parse(localStorage.getItem(VOTED_KEY) || '[]'); } catch (e) { return []; }
-  }
-
-  function markVoted(targetId) {
-    var list = votedIds();
-    if (list.indexOf(targetId) === -1) {
-      list.push(targetId);
-      localStorage.setItem(VOTED_KEY, JSON.stringify(list));
-    }
-  }
-
   function forgetStudent() {
     localStorage.removeItem(STUDENT_KEY);
     localStorage.removeItem(NAME_KEY);
     localStorage.removeItem(VOTED_KEY);
+  }
+
+  /** Si ya voto por esa persona. Se pregunta a la base, no al navegador:
+   *  asi el estudiante puede cambiar de celular sin perder su historial. */
+  async function hasVoted(targetId) {
+    var voter = studentId();
+    if (!voter) return false;
+    var rows = unwrap(
+      await db.from('fm_votes').select('id').eq('voter_id', voter).eq('target_id', targetId)
+    );
+    return rows.length > 0;
   }
 
   /* --------------------------------- Lectura -------------------------------- */
@@ -852,7 +851,6 @@ window.FM = (function () {
       }
       throw new Error(res.error.message);
     }
-    markVoted(targetId);
   }
 
   /* --------------------------- Acciones del docente -------------------------- */
@@ -1053,8 +1051,7 @@ window.FM = (function () {
     studentName: studentName,
     setStudent: setStudent,
     forgetStudent: forgetStudent,
-    votedIds: votedIds,
-    markVoted: markVoted,
+    hasVoted: hasVoted,
 
     students: students,
     studentsFull: studentsFull,
