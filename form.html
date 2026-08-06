@@ -1,0 +1,1309 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Founder Match · Tu perfil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { azul: '#102F4E', amarillo: '#EBAD3C', blanco: '#FEFEFE' },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<style>
+:root {
+  --azul: #102f4e;
+  --azul-800: #0b2238;
+  --azul-600: #1b4a76;
+  --amarillo: #ebad3c;
+  --blanco: #fefefe;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--blanco);
+  background:
+    radial-gradient(1100px 700px at 12% -10%, rgba(235, 173, 60, 0.22), transparent 60%),
+    radial-gradient(900px 600px at 95% 8%, rgba(27, 74, 118, 0.55), transparent 62%),
+    linear-gradient(160deg, #0b2238 0%, #102f4e 55%, #0b2238 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass {
+  background: rgba(254, 254, 254, 0.07);
+  border: 1px solid rgba(254, 254, 254, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 45px -22px rgba(0, 0, 0, 0.75);
+}
+
+.glass-strong {
+  background: rgba(254, 254, 254, 0.12);
+  border: 1px solid rgba(254, 254, 254, 0.24);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-dark {
+  background: rgba(11, 34, 56, 0.6);
+  border: 1px solid rgba(254, 254, 254, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.text-amarillo {
+  color: var(--amarillo);
+}
+
+.bg-amarillo {
+  background-color: var(--amarillo);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.85rem;
+  padding: 0.7rem 1.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--amarillo);
+  color: var(--azul);
+  box-shadow: 0 10px 26px -12px rgba(235, 173, 60, 0.9);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #f2bd5b;
+}
+
+.btn-ghost {
+  background: rgba(254, 254, 254, 0.08);
+  color: var(--blanco);
+  border-color: rgba(254, 254, 254, 0.22);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(254, 254, 254, 0.16);
+}
+
+.btn-danger {
+  background: rgba(220, 68, 68, 0.16);
+  color: #ffb4b4;
+  border-color: rgba(220, 68, 68, 0.45);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(220, 68, 68, 0.28);
+}
+
+.field {
+  width: 100%;
+  border-radius: 0.85rem;
+  background: rgba(11, 34, 56, 0.55);
+  border: 1px solid rgba(254, 254, 254, 0.18);
+  padding: 0.75rem 0.9rem;
+  color: var(--blanco);
+  font-size: 1rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field::placeholder {
+  color: rgba(254, 254, 254, 0.38);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--amarillo);
+  box-shadow: 0 0 0 3px rgba(235, 173, 60, 0.22);
+}
+
+.label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(254, 254, 254, 0.78);
+  margin-bottom: 0.4rem;
+}
+
+.hint {
+  font-size: 0.74rem;
+  color: rgba(254, 254, 254, 0.45);
+  margin-top: 0.3rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(235, 173, 60, 0.16);
+  color: var(--amarillo);
+  border: 1px solid rgba(235, 173, 60, 0.32);
+}
+
+.chip-muted {
+  background: rgba(254, 254, 254, 0.08);
+  color: rgba(254, 254, 254, 0.8);
+  border-color: rgba(254, 254, 254, 0.18);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, var(--amarillo), #c98a1f);
+  color: var(--azul);
+  font-weight: 800;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+@keyframes fmFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fmPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(18px);
+  }
+  60% {
+    transform: scale(1.01) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fmPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.anim-fade {
+  animation: fmFadeUp 0.4s ease both;
+}
+
+.anim-pop {
+  animation: fmPop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.anim-pulse {
+  animation: fmPulse 1.6s ease-in-out infinite;
+}
+
+.fm-toast {
+  position: fixed;
+  left: 50%;
+  /* Alto suficiente para no taparse con la barra fija de votación. */
+  bottom: 6.5rem;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  pointer-events: none;
+}
+
+.fm-toast > div {
+  background: rgba(11, 34, 56, 0.94);
+  border: 1px solid rgba(254, 254, 254, 0.2);
+  color: var(--blanco);
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.9);
+  animation: fmFadeUp 0.25s ease both;
+  max-width: 90vw;
+}
+
+.fm-toast .toast-error {
+  border-color: rgba(220, 68, 68, 0.6);
+  color: #ffc9c9;
+}
+
+.fm-toast .toast-ok {
+  border-color: rgba(235, 173, 60, 0.6);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(254, 254, 254, 0.18);
+  border-radius: 999px;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/*
+ * Configuracion de Founder Match.
+ *
+ * La llave de abajo es la llave PUBLICA (anon) del proyecto de Supabase.
+ * Esta hecha para vivir en el navegador: lo unico que permite es registrarse,
+ * votar y leer las cards de la clase. Las acciones del docente (proyectar,
+ * generar equipos, borrar) exigen el PIN y viven en funciones del servidor.
+ */
+window.FM_CONFIG = {
+  supabaseUrl: 'https://lvyugtfgxqhxuikndwyq.supabase.co',
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx2eXVndGZneHFoeHVpa25kd3lxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwMzYyMzQsImV4cCI6MjEwMTYxMjIzNH0.udeWbWr8sQL6tGaVROAQrhj_JJTmMhYP-7kKZA8iIuM',
+};
+
+</script>
+<script>
+/*
+ * Lógica de negocio de Founder Match, en el navegador.
+ *
+ *  - buildFounderCard: arma la Founder Card de forma determinística con las
+ *    respuestas del formulario. No hay ningún modelo de lenguaje de por medio.
+ *  - generateTeams: algoritmo de afinidad. Corazones mutuos suman +3, se siembran
+ *    los equipos con round-robin por industria y el resto entra con un greedy
+ *    global por afinidad promedio. Equipos de 3 a 4 personas.
+ */
+window.FMLogic = (function () {
+  /* ------------------------------ Founder Card ------------------------------ */
+
+  function firstSentence(value, max) {
+    var head = (value || '').trim().split('.')[0];
+    head = head ? head.trim() : '';
+    return head ? head.slice(0, max) : '';
+  }
+
+  function firstItem(value) {
+    var head = (value || '').trim().split(',')[0];
+    return head ? head.trim() : '';
+  }
+
+  function splitList(value) {
+    if (!value) return [];
+    return value
+      .split(/[,;]/)
+      .map(function (s) { return s.trim(); })
+      .filter(Boolean);
+  }
+
+  function detectArchetype(p) {
+    var text = [p.role, p.technicalSkills, p.softSkills, p.purpose].join(' ').toLowerCase();
+    if (text.indexOf('dato') >= 0 || text.indexOf('analítica') >= 0 || text.indexOf('analitica') >= 0 || text.indexOf('data') >= 0)
+      return '📊 El Analista';
+    if (text.indexOf('diseño') >= 0 || text.indexOf('diseno') >= 0 || text.indexOf('ux') >= 0 || text.indexOf('creativ') >= 0)
+      return '🎨 El Creativo';
+    if (text.indexOf('ventas') >= 0 || text.indexOf('comercial') >= 0 || text.indexOf('negocio') >= 0)
+      return '💼 El Comercial';
+    if (text.indexOf('tecnolog') >= 0 || text.indexOf('desarrollo') >= 0 || text.indexOf('código') >= 0 || text.indexOf('codigo') >= 0)
+      return '⚙️ El Técnico';
+    if (text.indexOf('líder') >= 0 || text.indexOf('lider') >= 0 || text.indexOf('gestión') >= 0 || text.indexOf('gestion') >= 0 || text.indexOf('estrategia') >= 0)
+      return '🧭 El Estratega';
+    return '🚀 El Founder';
+  }
+
+  function buildFounderCard(p) {
+    var tagline = firstSentence(p.purpose, 80) || p.role || 'Founder en construcción';
+    var superpower = firstSentence(p.whereAddsValue, 60) || firstItem(p.technicalSkills) || 'Aprender rápido';
+    var missionStatement =
+      ((p.purpose || '').trim() || 'Crear impacto') + ' en el sector ' + (p.industry || 'que elija');
+    var lookingFor = firstSentence(p.whereNeedsHelp, 80) || 'Un equipo complementario';
+
+    var topStrengths = [firstItem(p.technicalSkills), firstItem(p.softSkills), firstItem(p.whereAddsValue)]
+      .filter(Boolean)
+      .slice(0, 3);
+
+    return {
+      tagline: tagline,
+      superpower: superpower,
+      missionStatement: missionStatement,
+      lookingFor: lookingFor,
+      topStrengths: topStrengths,
+      topPassions: splitList(p.passions).slice(0, 3),
+      problemFocus: firstSentence(p.problemsToSolve, 100),
+      funFact: firstItem(p.hobbies) || (p.personality || '').trim(),
+      archetype: detectArchetype(p),
+      industry: p.industry || '',
+    };
+  }
+
+  /* -------------------------------- Equipos -------------------------------- */
+
+  var MUTUAL_HEART_BONUS = 3;
+  var HEART_POINTS = 1;
+  var DOUBT_POINTS = -1.5;
+
+  var STOPWORDS = {};
+  ('para con como este esta esto esos esas mas muy pero porque cuando donde todo toda todos todas que los las ' +
+   'del una uno unos unas por sus sin ser soy mis tener hacer poder sobre entre desde hasta the and for with ' +
+   'gente cosas tema temas area areas mucho mucha bien solo otro otra')
+    .split(' ')
+    .forEach(function (w) { STOPWORDS[w] = true; });
+
+  function norm(value) {
+    return String(value || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+  }
+
+  /** Normaliza para comparar pero guarda la palabra original, con tildes, para mostrarla. */
+  function tokenize(value, display) {
+    var out = {};
+    if (!value) return out;
+    String(value).split(/[^\p{L}\p{N}]+/u).forEach(function (word) {
+      if (!word) return;
+      var token = norm(word);
+      if (token.length < 4 || STOPWORDS[token]) return;
+      out[token] = true;
+      if (display && !display[token]) display[token] = word.toLowerCase();
+    });
+    return out;
+  }
+
+  function sharedTokens(a, b) {
+    return Object.keys(a).filter(function (t) { return b[t]; });
+  }
+
+  function capped(count, perHit, max) {
+    return Math.min(count * perHit, max);
+  }
+
+  function enrich(student, display) {
+    var p = student.profile || {};
+    return {
+      student: student,
+      archetype: (student.card && student.card.archetype) || detectArchetype(p),
+      industry: norm(student.industry || 'sin industria'),
+      passions: tokenize(p.passions, display),
+      values: tokenize(p.values, display),
+      problems: tokenize(p.problemsToSolve, display),
+      workStyle: tokenize(p.workStyle, display),
+      addsValue: tokenize(p.whereAddsValue, display),
+      needsHelp: tokenize(p.whereNeedsHelp, display),
+    };
+  }
+
+  function indexVotes(votes) {
+    var index = {};
+    votes.forEach(function (v) {
+      var entry = index[v.voter_id] || (index[v.voter_id] = { hearts: {}, doubts: {} });
+      if (v.vote_type === 'heart') entry.hearts[v.target_id] = true;
+      else entry.doubts[v.target_id] = true;
+    });
+    return index;
+  }
+
+  function pairScore(a, b, votes) {
+    var av = votes[a.student.id] || { hearts: {}, doubts: {} };
+    var bv = votes[b.student.id] || { hearts: {}, doubts: {} };
+    var aHeartsB = !!av.hearts[b.student.id];
+    var bHeartsA = !!bv.hearts[a.student.id];
+
+    var score = 0;
+    if (aHeartsB) score += HEART_POINTS;
+    if (bHeartsA) score += HEART_POINTS;
+    if (aHeartsB && bHeartsA) score += MUTUAL_HEART_BONUS;
+    if (av.doubts[b.student.id]) score += DOUBT_POINTS;
+    if (bv.doubts[a.student.id]) score += DOUBT_POINTS;
+
+    if (a.archetype !== b.archetype) score += 2;
+    if (a.industry !== b.industry) score += 0.5;
+
+    score += capped(sharedTokens(a.needsHelp, b.addsValue).length, 1.5, 3);
+    score += capped(sharedTokens(b.needsHelp, a.addsValue).length, 1.5, 3);
+    score += capped(sharedTokens(a.passions, b.passions).length, 1, 2);
+    score += capped(sharedTokens(a.values, b.values).length, 0.75, 1.5);
+    score += capped(sharedTokens(a.problems, b.problems).length, 1, 2);
+    score += capped(sharedTokens(a.workStyle, b.workStyle).length, 0.5, 1);
+    return score;
+  }
+
+  function teamCountFor(n) {
+    var count = Math.ceil(n / 4);
+    while (count > 1 && n < count * 3) count--;
+    return Math.max(1, count);
+  }
+
+  function generateTeams(students, votes) {
+    if (!students.length) return [];
+
+    var display = {};
+    var people = students
+      .slice()
+      .sort(function (a, b) { return a.ts - b.ts; })
+      .map(function (s) { return enrich(s, display); });
+    var voteIndex = indexVotes(votes || []);
+
+    if (people.length <= 4) return [describeTeam(1, people, voteIndex, display)];
+
+    var count = teamCountFor(people.length);
+    var base = Math.floor(people.length / count);
+    var remainder = people.length % count;
+    var capacity = [];
+    for (var i = 0; i < count; i++) capacity.push(base + (i < remainder ? 1 : 0));
+
+    // Round-robin por industria: se reparte una persona de cada industria por turno.
+    var buckets = {};
+    people.forEach(function (person) {
+      (buckets[person.industry] || (buckets[person.industry] = [])).push(person);
+    });
+    var queues = Object.keys(buckets)
+      .map(function (k) { return buckets[k]; })
+      .sort(function (a, b) { return b.length - a.length; });
+
+    var ordered = [];
+    var pending = people.length;
+    while (pending > 0) {
+      queues.forEach(function (queue) {
+        var next = queue.shift();
+        if (next) {
+          ordered.push(next);
+          pending--;
+        }
+      });
+    }
+
+    var teams = [];
+    for (var t = 0; t < count; t++) teams.push(ordered[t] ? [ordered[t]] : []);
+    var remaining = ordered.slice(count);
+
+    // Greedy global: entra siempre la mejor pareja (persona, equipo) disponible.
+    while (remaining.length > 0) {
+      var bestPerson = 0;
+      var bestTeam = -1;
+      var bestScore = -Infinity;
+      for (var pi = 0; pi < remaining.length; pi++) {
+        for (var ti = 0; ti < teams.length; ti++) {
+          if (teams[ti].length >= capacity[ti]) continue;
+          var sum = 0;
+          for (var m = 0; m < teams[ti].length; m++) sum += pairScore(remaining[pi], teams[ti][m], voteIndex);
+          var sameIndustry = teams[ti].filter(function (x) { return x.industry === remaining[pi].industry; }).length;
+          var score = sum / teams[ti].length - sameIndustry * 1.5;
+          if (score > bestScore) {
+            bestScore = score;
+            bestPerson = pi;
+            bestTeam = ti;
+          }
+        }
+      }
+      if (bestTeam === -1) break;
+      teams[bestTeam].push(remaining[bestPerson]);
+      remaining.splice(bestPerson, 1);
+    }
+
+    return teams
+      .filter(function (t) { return t.length > 0; })
+      .map(function (members, i) { return describeTeam(i + 1, members, voteIndex, display); });
+  }
+
+  function unique(list) {
+    var seen = {};
+    return list.filter(function (x) {
+      if (!x || seen[x]) return false;
+      seen[x] = true;
+      return true;
+    });
+  }
+
+  function topRepeated(tokens, limit, display) {
+    var counts = {};
+    tokens.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; });
+    return Object.keys(counts)
+      .sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); })
+      .slice(0, limit)
+      .map(function (t) { return display[t] || t; });
+  }
+
+  function capitalize(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+
+  function describeTeam(id, members, votes, display) {
+    var names = members.map(function (m) { return m.student.name; });
+    var industries = unique(members.map(function (m) { return m.student.industry; }));
+    var archetypes = unique(members.map(function (m) { return m.archetype; }));
+
+    var mutualHearts = 0;
+    var passionHits = [];
+    var valueHits = [];
+    var problemHits = [];
+    var bridges = [];
+
+    for (var i = 0; i < members.length; i++) {
+      for (var j = i + 1; j < members.length; j++) {
+        var a = members[i];
+        var b = members[j];
+        var av = votes[a.student.id] || { hearts: {} };
+        var bv = votes[b.student.id] || { hearts: {} };
+        if (av.hearts[b.student.id] && bv.hearts[a.student.id]) mutualHearts++;
+        passionHits = passionHits.concat(sharedTokens(a.passions, b.passions));
+        valueHits = valueHits.concat(sharedTokens(a.values, b.values));
+        problemHits = problemHits.concat(sharedTokens(a.problems, b.problems));
+        if (sharedTokens(a.needsHelp, b.addsValue).length > 0)
+          bridges.push(b.student.name + ' cubre lo que ' + a.student.name + ' pidió reforzar');
+        if (sharedTokens(b.needsHelp, a.addsValue).length > 0)
+          bridges.push(a.student.name + ' cubre lo que ' + b.student.name + ' pidió reforzar');
+      }
+    }
+
+    var reasonParts = [];
+    if (mutualHearts > 0) {
+      reasonParts.push(
+        mutualHearts === 1
+          ? 'tiene 1 conexión mutua de corazón en la votación'
+          : 'tiene ' + mutualHearts + ' conexiones mutuas de corazón en la votación'
+      );
+    }
+    if (industries.length > 1) reasonParts.push('combina ' + industries.length + ' industrias (' + industries.join(', ') + ')');
+    else if (industries.length === 1) reasonParts.push('comparte foco en ' + industries[0]);
+    if (archetypes.length > 1) reasonParts.push('mezcla ' + archetypes.length + ' perfiles distintos');
+
+    var reason = reasonParts.length
+      ? capitalize(reasonParts.join('; ')) + '.'
+      : 'Armado por balance de perfiles e industrias.';
+
+    var topPassions = topRepeated(passionHits.concat(problemHits), 3, display);
+    var topValues = topRepeated(valueHits, 2, display);
+    var synergyParts = [];
+    if (topPassions.length) synergyParts.push('intereses en común: ' + topPassions.join(', '));
+    if (topValues.length) synergyParts.push('valores compartidos: ' + topValues.join(', '));
+    var synergy = synergyParts.length
+      ? capitalize(synergyParts.join(' · '))
+      : names.join(', ') + ' no declararon intereses idénticos, así que el equipo arranca desde la curiosidad mutua.';
+
+    var complementarityParts = ['Perfiles: ' + archetypes.join(' + ')];
+    var uniqueBridges = unique(bridges).slice(0, 3);
+    if (uniqueBridges.length) complementarityParts.push(uniqueBridges.join('; '));
+
+    return {
+      id: id,
+      members: members.map(function (m) { return m.student.id; }),
+      reason: reason,
+      synergy: synergy,
+      complementarity: complementarityParts.join('. ') + '.',
+    };
+  }
+
+  return {
+    buildFounderCard: buildFounderCard,
+    detectArchetype: detectArchetype,
+    generateTeams: generateTeams,
+  };
+})();
+
+</script>
+<script>
+/*
+ * Capa de datos y utilidades de Founder Match.
+ *
+ * Los datos viven en Supabase: los celulares hablan directo con la base, sin
+ * pasar por n8n (n8n solo entrega las paginas). El cambio de card llega por el
+ * canal en vivo de Supabase, por eso los 18 celulares cambian al mismo tiempo.
+ */
+window.FM = (function () {
+  var STUDENT_KEY = 'fm_student_id';
+  var NAME_KEY = 'fm_student_name';
+  var VOTED_KEY = 'fm_voted_ids';
+  var PIN_KEY = 'fm_pin';
+
+  var db = window.supabase.createClient(FM_CONFIG.supabaseUrl, FM_CONFIG.supabaseAnonKey, {
+    auth: { persistSession: false },
+    realtime: { params: { eventsPerSecond: 20 } },
+  });
+
+  var photoCache = {};
+
+  /* ------------------------------- Utilidades ------------------------------- */
+
+  function esc(value) {
+    if (value === null || value === undefined) return '';
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function initials(name) {
+    var parts = String(name || '?').trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  function toast(message, kind) {
+    var host = document.querySelector('.fm-toast');
+    if (!host) {
+      host = document.createElement('div');
+      host.className = 'fm-toast';
+      document.body.appendChild(host);
+    }
+    var node = document.createElement('div');
+    node.className = kind === 'error' ? 'toast-error' : kind === 'ok' ? 'toast-ok' : '';
+    node.textContent = message;
+    host.appendChild(node);
+    setTimeout(function () {
+      node.style.transition = 'opacity .3s ease';
+      node.style.opacity = '0';
+      setTimeout(function () { node.remove(); }, 320);
+    }, 3200);
+  }
+
+  function newStudentId() {
+    var rand = function () { return Math.random().toString(36).slice(2, 8); };
+    return 's_' + Date.now() + '_' + rand() + '_' + rand();
+  }
+
+  /* --------------------------- Estado del navegador -------------------------- */
+
+  function studentId() { return localStorage.getItem(STUDENT_KEY); }
+  function studentName() { return localStorage.getItem(NAME_KEY) || ''; }
+
+  function setStudent(id, name) {
+    localStorage.setItem(STUDENT_KEY, id);
+    if (name) localStorage.setItem(NAME_KEY, name);
+  }
+
+  function votedIds() {
+    try { return JSON.parse(localStorage.getItem(VOTED_KEY) || '[]'); } catch (e) { return []; }
+  }
+
+  function markVoted(targetId) {
+    var list = votedIds();
+    if (list.indexOf(targetId) === -1) {
+      list.push(targetId);
+      localStorage.setItem(VOTED_KEY, JSON.stringify(list));
+    }
+  }
+
+  function forgetStudent() {
+    localStorage.removeItem(STUDENT_KEY);
+    localStorage.removeItem(NAME_KEY);
+    localStorage.removeItem(VOTED_KEY);
+  }
+
+  /* --------------------------------- Lectura -------------------------------- */
+
+  function unwrap(res) {
+    if (res.error) throw new Error(res.error.message || 'Error de base de datos');
+    return res.data;
+  }
+
+  async function students() {
+    return unwrap(
+      await db.from('fm_students').select('id,ts,name,role,industry,has_photo,card').order('ts', { ascending: true })
+    );
+  }
+
+  async function studentsFull() {
+    return unwrap(await db.from('fm_students').select('*').order('ts', { ascending: true }));
+  }
+
+  async function student(id) {
+    var rows = unwrap(await db.from('fm_students').select('id,ts,name,role,industry,has_photo,card').eq('id', id));
+    return rows[0] || null;
+  }
+
+  async function votes() {
+    return unwrap(await db.from('fm_votes').select('voter_id,target_id,vote_type'));
+  }
+
+  /** { targetId: {hearts, doubts, total, heartPct} } a partir de todos los votos. */
+  function tallyFrom(voteRows) {
+    var out = {};
+    voteRows.forEach(function (v) {
+      var t = out[v.target_id] || (out[v.target_id] = { hearts: 0, doubts: 0, total: 0, heartPct: 0 });
+      if (v.vote_type === 'heart') t.hearts++;
+      else t.doubts++;
+    });
+    Object.keys(out).forEach(function (id) {
+      var t = out[id];
+      t.total = t.hearts + t.doubts;
+      t.heartPct = t.total === 0 ? 0 : Math.round((t.hearts / t.total) * 100);
+    });
+    return out;
+  }
+
+  function emptyTally() {
+    return { hearts: 0, doubts: 0, total: 0, heartPct: 0 };
+  }
+
+  async function state() {
+    var rows = unwrap(await db.from('fm_state').select('*').eq('id', 1));
+    return rows[0] || { current_card_id: null, match_active: false, teams: null };
+  }
+
+  async function photo(id) {
+    if (photoCache[id] !== undefined) return photoCache[id];
+    var rows = unwrap(await db.from('fm_student_photos').select('photo').eq('student_id', id));
+    photoCache[id] = rows[0] ? rows[0].photo : '';
+    return photoCache[id];
+  }
+
+  /* -------------------------------- Escritura ------------------------------- */
+
+  async function submit(profile, photoData) {
+    var id = newStudentId();
+    var card = FMLogic.buildFounderCard(profile);
+
+    var res = await db.from('fm_students').insert({
+      id: id,
+      ts: Date.now(),
+      name: profile.name,
+      role: profile.role || '',
+      industry: profile.industry || '',
+      has_photo: Boolean(photoData),
+      profile: profile,
+      card: card,
+    });
+    if (res.error) throw new Error(res.error.message);
+
+    if (photoData) {
+      var photoRes = await db.from('fm_student_photos').insert({ student_id: id, photo: photoData });
+      if (photoRes.error) {
+        // La card ya quedo creada; la foto es secundaria.
+        console.warn('No se pudo guardar la foto:', photoRes.error.message);
+      } else {
+        photoCache[id] = photoData;
+      }
+    }
+    return { id: id, card: card };
+  }
+
+  async function vote(targetId, type) {
+    var voter = studentId();
+    if (!voter) throw new Error('Primero crea tu perfil');
+    if (voter === targetId) throw new Error('No puedes votarte a ti mismo');
+
+    var res = await db.from('fm_votes').insert({
+      voter_id: voter,
+      target_id: targetId,
+      vote_type: type,
+      ts: Date.now(),
+    });
+    if (res.error) {
+      if (res.error.code === '23505') {
+        var err = new Error('Ya votaste por esta persona');
+        err.already = true;
+        throw err;
+      }
+      throw new Error(res.error.message);
+    }
+    markVoted(targetId);
+  }
+
+  /* --------------------------- Acciones del docente -------------------------- */
+
+  function pin() { return localStorage.getItem(PIN_KEY) || ''; }
+
+  /** Pide el PIN una vez por dispositivo y lo valida contra la base. */
+  async function ensurePin() {
+    if (pin()) return true;
+    var value = window.prompt('PIN del docente:');
+    if (!value) return false;
+    var res = await db.rpc('fm_set_card', { p_pin: value.trim(), p_student_id: '' });
+    if (res.error) {
+      toast('PIN incorrecto', 'error');
+      return false;
+    }
+    localStorage.setItem(PIN_KEY, value.trim());
+    return true;
+  }
+
+  async function setCard(id) {
+    if (!(await ensurePin())) return false;
+    var res = await db.rpc('fm_set_card', { p_pin: pin(), p_student_id: id || '' });
+    if (res.error) throw new Error(res.error.message);
+    return true;
+  }
+
+  async function saveTeams(teams) {
+    if (!(await ensurePin())) return false;
+    var res = await db.rpc('fm_save_teams', { p_pin: pin(), p_teams: teams });
+    if (res.error) throw new Error(res.error.message);
+    return true;
+  }
+
+  async function resetAll() {
+    if (!(await ensurePin())) return false;
+    var res = await db.rpc('fm_reset_all', { p_pin: pin() });
+    if (res.error) throw new Error(res.error.message);
+    photoCache = {};
+    return true;
+  }
+
+  /** Genera los equipos con el algoritmo de afinidad y los guarda. */
+  async function generateAndSaveTeams() {
+    var people = await studentsFull();
+    if (people.length < 3) throw new Error('Se necesitan al menos 3 estudiantes registrados');
+    var teams = FMLogic.generateTeams(people, await votes());
+    if (!(await saveTeams(teams))) return null;
+    return teams;
+  }
+
+  /* -------------------------------- Tiempo real ------------------------------ */
+
+  /**
+   * handlers = { onStatus, student (nuevo registro), vote (voto nuevo), state (cambio de card o equipos) }
+   * El handler `state` recibe { studentId, matchActive, teams, student }.
+   */
+  function live(handlers) {
+    var channel = db
+      .channel('founder-match')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'fm_students' }, function (payload) {
+        if (handlers.student) handlers.student(payload.new);
+      })
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'fm_votes' }, function (payload) {
+        if (handlers.vote) handlers.vote(payload.new);
+      })
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'fm_state' }, async function (payload) {
+        if (!handlers.state) return;
+        var row = payload.new;
+        var current = row.current_card_id ? await student(row.current_card_id) : null;
+        handlers.state({
+          studentId: row.current_card_id,
+          matchActive: row.match_active,
+          teams: row.teams,
+          student: current,
+        });
+      })
+      .subscribe(function (status) {
+        if (handlers.onStatus) handlers.onStatus(status === 'SUBSCRIBED');
+      });
+    return channel;
+  }
+
+  /* ---------------------------------- Vistas -------------------------------- */
+
+  function avatarHtml(person, sizeClass, extraClass) {
+    var cls = 'avatar ' + (sizeClass || 'w-12 h-12 text-base') + ' ' + (extraClass || '');
+    var id = person && person.id;
+    var hasPhoto = person && (person.has_photo || person.hasPhoto);
+    return (
+      '<div class="' + cls + '"' + (hasPhoto ? ' data-photo="' + esc(id) + '"' : '') + '>' +
+      esc(initials(person && person.name)) +
+      '</div>'
+    );
+  }
+
+  /** Rellena las fotos de los avatares que quedaron pendientes en el DOM. */
+  async function hydratePhotos(root) {
+    var nodes = (root || document).querySelectorAll('[data-photo]');
+    if (!nodes.length) return;
+    var ids = [];
+    Array.prototype.forEach.call(nodes, function (node) {
+      var id = node.getAttribute('data-photo');
+      if (photoCache[id] === undefined && ids.indexOf(id) === -1) ids.push(id);
+    });
+
+    if (ids.length) {
+      var rows = unwrap(await db.from('fm_student_photos').select('student_id,photo').in('student_id', ids));
+      rows.forEach(function (row) { photoCache[row.student_id] = row.photo; });
+      ids.forEach(function (id) { if (photoCache[id] === undefined) photoCache[id] = ''; });
+    }
+
+    Array.prototype.forEach.call(nodes, function (node) {
+      var url = photoCache[node.getAttribute('data-photo')];
+      if (!url) return;
+      node.textContent = '';
+      node.style.backgroundImage = 'url(' + url + ')';
+      node.style.backgroundSize = 'cover';
+      node.style.backgroundPosition = 'center';
+      node.removeAttribute('data-photo');
+    });
+  }
+
+  function nav(active) {
+    var links = [
+      ['/', 'Docente'],
+      ['/match', 'Pantalla'],
+      ['/form', 'Formulario'],
+      ['/vote', 'Votar'],
+      ['/results', 'Equipos'],
+      ['/slides', 'Slides'],
+      ['/toolkit', 'Toolkit'],
+      ['/hub', 'Hub'],
+    ];
+    return links
+      .map(function (link) {
+        var href = url(link[0]);
+        var on = link[0] === active;
+        return (
+          '<a href="' + href + '" class="px-3 py-1.5 rounded-lg text-sm font-medium transition ' +
+          (on ? 'bg-amarillo text-[#102F4E]' : 'text-white/65 hover:text-white hover:bg-white/10') +
+          '">' + link[1] + '</a>'
+        );
+      })
+      .join('');
+  }
+
+  /**
+   * Resuelve un link interno. Sirve tanto servido por n8n
+   * (.../webhook/founder-match/form) como en local (/form).
+   */
+  function url(path) {
+    var clean = path === '/' ? 'dashboard' : path.replace(/^\//, '');
+    var here = window.location.pathname;
+    if (/\/$/.test(here)) return here + clean + '.html';
+    if (/\.html$/.test(here)) return here.replace(/[^/]+$/, clean + '.html');
+    return path;
+  }
+
+  /** Redimensiona y comprime la foto en el navegador antes de subirla. */
+  function compressImage(file, maxSide, quality) {
+    maxSide = maxSide || 720;
+    quality = quality || 0.72;
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onerror = function () { reject(new Error('No se pudo leer la imagen')); };
+      reader.onload = function () {
+        var img = new Image();
+        img.onerror = function () { reject(new Error('El archivo no parece una imagen')); };
+        img.onload = function () {
+          var scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+          var canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  return {
+    db: db,
+    esc: esc,
+    initials: initials,
+    toast: toast,
+    url: url,
+    nav: nav,
+    avatarHtml: avatarHtml,
+    hydratePhotos: hydratePhotos,
+    compressImage: compressImage,
+
+    studentId: studentId,
+    studentName: studentName,
+    setStudent: setStudent,
+    forgetStudent: forgetStudent,
+    votedIds: votedIds,
+    markVoted: markVoted,
+
+    students: students,
+    studentsFull: studentsFull,
+    student: student,
+    votes: votes,
+    tallyFrom: tallyFrom,
+    emptyTally: emptyTally,
+    state: state,
+    photo: photo,
+
+    submit: submit,
+    vote: vote,
+    setCard: setCard,
+    resetAll: resetAll,
+    generateAndSaveTeams: generateAndSaveTeams,
+    ensurePin: ensurePin,
+
+    live: live,
+  };
+})();
+
+</script>
+
+<div class="min-h-screen px-4 py-6 md:py-10">
+  <div class="max-w-2xl mx-auto">
+    <header class="text-center mb-7">
+      <div class="w-14 h-14 rounded-2xl bg-amarillo text-azul grid place-items-center font-black text-xl mx-auto mb-3">FM</div>
+      <h1 class="text-2xl md:text-3xl font-extrabold">Founder Match</h1>
+      <p class="text-white/60 text-sm mt-1">Cuéntanos quién eres. Con esto se arma tu Founder Card.</p>
+    </header>
+
+    <div id="progressWrap" class="glass rounded-full h-2 mb-6 overflow-hidden">
+      <div id="progressBar" class="h-full bg-amarillo transition-all duration-300" style="width: 0%"></div>
+    </div>
+
+    <form id="form" class="space-y-5">
+      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
+        <h2 class="font-bold text-lg text-amarillo">1 · Quién eres</h2>
+
+        <div>
+          <label class="label" for="name">Nombre completo *</label>
+          <input id="name" name="name" class="field" required maxlength="120" autocomplete="name" placeholder="María Fernanda Rojas">
+        </div>
+
+        <div>
+          <label class="label">Foto</label>
+          <div class="flex items-center gap-4">
+            <div id="photoPreview" class="avatar w-20 h-20 rounded-2xl text-xl shrink-0">?</div>
+            <div class="flex-1">
+              <input id="photo" type="file" accept="image/*"
+                class="block w-full text-sm text-white/70 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amarillo file:text-azul">
+              <p class="hint" id="photoHint">Puedes elegirla de tu galería o tomarla con la cámara.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="label" for="role">Rol profesional *</label>
+          <input id="role" name="role" class="field" required maxlength="120" placeholder="Analista de datos / Diseñadora UX / Gerente comercial">
+        </div>
+
+        <div>
+          <label class="label" for="industry">Industria de interés *</label>
+          <input id="industry" name="industry" class="field" required maxlength="120" placeholder="Salud, educación, fintech, agro, logística…">
+        </div>
+      </section>
+
+      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
+        <h2 class="font-bold text-lg text-amarillo">2 · Qué sabes hacer</h2>
+
+        <div>
+          <label class="label" for="technicalSkills">Habilidades técnicas *</label>
+          <input id="technicalSkills" name="technicalSkills" class="field" required maxlength="300" placeholder="SQL, Python, Power BI, finanzas… (sepáralas con comas)">
+          <p class="hint">Separa con comas. La primera aparecerá en tu card.</p>
+        </div>
+
+        <div>
+          <label class="label" for="softSkills">Habilidades blandas *</label>
+          <input id="softSkills" name="softSkills" class="field" required maxlength="300" placeholder="Comunicación, negociación, liderazgo…">
+        </div>
+
+        <div>
+          <label class="label" for="experience">Experiencia previa</label>
+          <textarea id="experience" name="experience" class="field" rows="2" maxlength="600" placeholder="Dónde has trabajado y en qué"></textarea>
+        </div>
+      </section>
+
+      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
+        <h2 class="font-bold text-lg text-amarillo">3 · Qué te mueve</h2>
+
+        <div>
+          <label class="label" for="purpose">Propósito de vida o profesional *</label>
+          <textarea id="purpose" name="purpose" class="field" rows="2" required maxlength="600" placeholder="Quiero que la educación técnica llegue a municipios pequeños."></textarea>
+          <p class="hint">La primera frase se convierte en el lema de tu card.</p>
+        </div>
+
+        <div>
+          <label class="label" for="passions">Pasiones *</label>
+          <input id="passions" name="passions" class="field" required maxlength="300" placeholder="Educación, deporte, música, sostenibilidad…">
+        </div>
+
+        <div>
+          <label class="label" for="problemsToSolve">Problemas que quieres resolver en el mundo *</label>
+          <textarea id="problemsToSolve" name="problemsToSolve" class="field" rows="2" required maxlength="600" placeholder="El acceso a crédito para tenderos de barrio."></textarea>
+        </div>
+
+        <div>
+          <label class="label" for="hobbies">Hobbies</label>
+          <input id="hobbies" name="hobbies" class="field" maxlength="300" placeholder="Correr, cocinar, ajedrez…">
+        </div>
+
+        <div>
+          <label class="label" for="personality">Personalidad</label>
+          <input id="personality" name="personality" class="field" maxlength="300" placeholder="Introvertida, analítica, me cargo de energía en grupo…">
+        </div>
+      </section>
+
+      <section class="glass rounded-2xl p-4 md:p-6 space-y-4">
+        <h2 class="font-bold text-lg text-amarillo">4 · Cómo trabajas en equipo</h2>
+
+        <div>
+          <label class="label" for="workStyle">Estilo de trabajo</label>
+          <input id="workStyle" name="workStyle" class="field" maxlength="300" placeholder="Estructurado, por sprints, necesito silencio para producir…">
+        </div>
+
+        <div>
+          <label class="label" for="values">Valores</label>
+          <input id="values" name="values" class="field" maxlength="300" placeholder="Honestidad, disciplina, impacto social…">
+        </div>
+
+        <div>
+          <label class="label" for="expectations">Expectativas del programa</label>
+          <textarea id="expectations" name="expectations" class="field" rows="2" maxlength="600" placeholder="Qué esperas llevarte de la maestría"></textarea>
+        </div>
+
+        <div>
+          <label class="label" for="whereAddsValue">Dónde agregas más valor en un equipo *</label>
+          <textarea id="whereAddsValue" name="whereAddsValue" class="field" rows="2" required maxlength="600" placeholder="Ordeno la información y convierto ideas sueltas en un plan."></textarea>
+        </div>
+
+        <div>
+          <label class="label" for="whereNeedsHelp">Dónde necesitas ayuda en un equipo *</label>
+          <textarea id="whereNeedsHelp" name="whereNeedsHelp" class="field" rows="2" required maxlength="600" placeholder="Me cuesta vender la idea frente a un cliente."></textarea>
+        </div>
+      </section>
+
+      <button id="submitBtn" type="submit" class="btn btn-primary w-full text-base py-4">Crear mi Founder Card</button>
+      <p class="text-center text-white/40 text-xs pb-8">
+        Tus respuestas solo se usan para armar los equipos de la clase de hoy.
+      </p>
+    </form>
+
+    <div id="done" class="hidden"></div>
+  </div>
+</div>
+
+<script>
+  var photoData = '';
+  var form = document.getElementById('form');
+  var fields = Array.prototype.slice.call(form.querySelectorAll('input[name], textarea[name]'));
+
+  function updateProgress() {
+    var filled = fields.filter(function (f) { return f.value.trim().length > 0; }).length;
+    var total = fields.length + 1;
+    var done = filled + (photoData ? 1 : 0);
+    document.getElementById('progressBar').style.width = Math.round((done / total) * 100) + '%';
+  }
+  fields.forEach(function (f) { f.addEventListener('input', updateProgress); });
+
+  document.getElementById('photo').addEventListener('change', async function (event) {
+    var file = event.target.files && event.target.files[0];
+    if (!file) return;
+    var hint = document.getElementById('photoHint');
+    hint.textContent = 'Procesando la foto…';
+    try {
+      photoData = await FM.compressImage(file, 720, 0.72);
+      var preview = document.getElementById('photoPreview');
+      preview.innerHTML = '';
+      preview.style.backgroundImage = 'url(' + photoData + ')';
+      preview.style.backgroundSize = 'cover';
+      preview.style.backgroundPosition = 'center';
+      hint.textContent = 'Foto lista (' + Math.round(photoData.length / 1400) + ' KB aprox).';
+      updateProgress();
+    } catch (err) {
+      photoData = '';
+      hint.textContent = 'No se pudo usar esa imagen. Intenta con otra.';
+      FM.toast(err.message, 'error');
+    }
+  });
+
+  document.getElementById('name').addEventListener('input', function () {
+    if (!photoData) document.getElementById('photoPreview').textContent = FM.initials(this.value);
+  });
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    var payload = { photo: photoData };
+    fields.forEach(function (f) { payload[f.name] = f.value.trim(); });
+
+    btn.disabled = true;
+    btn.textContent = 'Creando tu card…';
+    try {
+      var res = await FM.submit(payload, photoData);
+      FM.setStudent(res.id, payload.name);
+      showCard(payload, res.card);
+    } catch (err) {
+      FM.toast(err.message, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Crear mi Founder Card';
+    }
+  });
+
+  function showCard(profile, card) {
+    form.classList.add('hidden');
+    document.getElementById('progressWrap').classList.add('hidden');
+    var host = document.getElementById('done');
+    host.classList.remove('hidden');
+    host.innerHTML =
+      '<div class="glass-strong rounded-3xl p-6 anim-pop text-center">' +
+      (photoData
+        ? '<img src="' + photoData + '" class="avatar w-28 h-28 rounded-2xl mx-auto mb-4" alt="">'
+        : '<div class="avatar w-28 h-28 rounded-2xl mx-auto mb-4 text-3xl">' + FM.esc(FM.initials(profile.name)) + '</div>') +
+      '<p class="chip mx-auto mb-3">' + FM.esc(card.archetype) + '</p>' +
+      '<h2 class="text-2xl font-extrabold">' + FM.esc(profile.name) + '</h2>' +
+      '<p class="text-white/60 text-sm">' + FM.esc(profile.role) + ' · ' + FM.esc(card.industry) + '</p>' +
+      '<p class="text-amarillo font-semibold mt-4 text-lg leading-snug">“' + FM.esc(card.tagline) + '”</p>' +
+      '<div class="grid gap-3 mt-5 text-left">' +
+      block('Superpoder', card.superpower) +
+      block('Misión', card.missionStatement) +
+      block('Busca', card.lookingFor) +
+      (card.topStrengths.length ? block('Fortalezas', card.topStrengths.join(' · ')) : '') +
+      (card.topPassions.length ? block('Pasiones', card.topPassions.join(' · ')) : '') +
+      (card.problemFocus ? block('Problema que quiere resolver', card.problemFocus) : '') +
+      (card.funFact ? block('Dato curioso', card.funFact) : '') +
+      '</div>' +
+      '<a href="' + FM.url('/vote') + '" class="btn btn-primary w-full mt-6">Ir a votar</a>' +
+      '<p class="text-white/45 text-xs mt-3">Espera a que el docente proyecte la primera card.</p>' +
+      '</div>';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function block(title, value) {
+    return (
+      '<div class="bg-white/5 border border-white/10 rounded-xl p-3">' +
+      '<p class="text-white/45 text-xs font-semibold uppercase tracking-wide">' + FM.esc(title) + '</p>' +
+      '<p class="text-sm mt-1 leading-snug">' + FM.esc(value) + '</p></div>'
+    );
+  }
+
+  if (FM.studentId()) {
+    FM.toast('Ya te habías registrado en este celular. Si envías de nuevo, se crea otra card.');
+  }
+  updateProgress();
+</script>
